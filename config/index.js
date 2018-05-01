@@ -45,7 +45,8 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    //修改index.html 生成目录
+    index: path.resolve(__dirname, '../index.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
