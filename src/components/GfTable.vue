@@ -1,4 +1,5 @@
 <template>
+  <div>
   <el-table
     :data="tableData"
     style="width: 100%">
@@ -28,6 +29,7 @@
       </template>
     </template>
   </el-table>
+  </div>
 </template>
 
 <script>
@@ -54,6 +56,11 @@
             address: '上海市普陀区金沙江路 1516 弄'
           }],
         tableColumns: [],
+        tablePage:{
+          pageSize:10,
+          pageIndex:0,
+          total:0
+        }
       }
     },
     props: {
@@ -71,20 +78,30 @@
         required: false
       }
     },
-    components: {
-      tableColumns: function () {
-        console.log(this.tableOption);
-        return this.tableOption.columns;
+    computed: {
+      currentPage:function () {
+        return 1;
       }
     },
     methods: {
       init: function () {
         this.getTableColumns();
+        this.getTableData();
       },
       getTableColumns: function () {
         this.tableColumns = this.tableOption.columns;
+      },
+      getTableData:function(){
+        if(this.tableOption.page === true){
 
-      }
+        }
+      },
+      handleSizeChange:function () {
+
+      },
+      handleCurrentChange:function () {
+
+      },
     },
     mounted: function () {
       this.init();
