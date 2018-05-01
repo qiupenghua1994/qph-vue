@@ -1,7 +1,7 @@
 <template>
   <nav id="navbar" :class="{'shrink':isNavBarShrink}">
     <div class="header">
-      <a class="header_logo"><img src="../assets/logo_header.svg"></a>
+      <a class="header_logo"><img src="../../assets/logo_header.svg"></a>
       <button class="header_btn" v-show="isSmallScreen">打开目录</button>
       <div class="header_menu">
         <a class="header_menu_item" v-for="menu in menus">{{menu.name}}</a>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import scroll from '../utils/scroll'
+  import scroll from '../../utils/scroll'
   export default {
     name: "gfHeader",
     data() {

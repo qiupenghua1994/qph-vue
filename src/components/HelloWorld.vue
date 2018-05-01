@@ -75,7 +75,7 @@
   .bigPic{
     width: 100%;
     height: 1000px;
-    background-image: url(/static/img/tangwei.c6b300f.jpeg);
+    background-image: url("../assets/tangwei.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
   }
