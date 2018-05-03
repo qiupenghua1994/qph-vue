@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import GfHeader from "./components/test/gfHeader";
+  import GfHeader from "./components/gfHeader";
 export default {
   name: 'App',
   components: {GfHeader}

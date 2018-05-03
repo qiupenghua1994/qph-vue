@@ -5,6 +5,7 @@ import GfTable from '@/components/GfTable'
 import page from '@/components/page'
 import pageA from '@/components/pageA'
 import pageB from '@/components/pageB'
+import specialEffects from '@/page/specialEffects'
 
 Vue.use(Router)
 
@@ -16,6 +17,13 @@ export default new Router({
       component: HelloWorld,
 
     },
+    {
+      path: '/specialEffects',
+      name: 'specialEffects',
+      component: specialEffects,
+
+    },
+
     {
        path:'/page',
       name:'page',
