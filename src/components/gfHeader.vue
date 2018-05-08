@@ -21,10 +21,10 @@
         isSmallScreen: false,
         menus: [
           {name: '特效页面',router:'specialEffects'},
-          {name: '主题奖项'},
-          {name: '议程安排'},
-          {name: '评委嘉宾'},
-          {name: '合作伙伴'}
+          {name: '敬请等待'},
+          {name: '敬请等待'},
+          {name: '敬请等待'},
+          {name: '敬请等待'}
         ]
       }
     },
@@ -34,6 +34,7 @@
       }
     },
     mounted:function () {
+
       scroll.onScrollTopChange(function (e) {
         if(e <3){
           this.isNavBarShrink = false;
