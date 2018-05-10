@@ -6,6 +6,8 @@ import page from '@/components/page'
 import pageA from '@/components/pageA'
 import pageB from '@/components/pageB'
 import specialEffects from '@/page/specialEffects'
+import packagIndex from '@/page/packag/index'
+import elementIndex from '@/page/packag/element/index'
 
 Vue.use(Router)
 
@@ -21,21 +23,35 @@ export default new Router({
       path: '/specialEffects',
       name: 'specialEffects',
       component: specialEffects,
-
     },
 
     {
-       path:'/page',
-      name:'page',
-      component:page,
+      path: '/packag',
+      name: 'packag',
+      component: packagIndex,
       children:[
         {
           path:'',
-          component:pageA
+          component: elementIndex
         },
         {
           path:'pageB',
           component:pageB
+        }
+      ]
+    },
+    {
+      path: '/page',
+      name: 'page',
+      component: page,
+      children: [
+        {
+          path: '',
+          component: pageA
+        },
+        {
+          path: 'pageB',
+          component: pageB
         }
       ]
     }

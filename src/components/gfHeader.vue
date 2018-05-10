@@ -21,7 +21,7 @@
         isSmallScreen: false,
         menus: [
           {name: '特效页面',router:'specialEffects'},
-          {name: '敬请等待'},
+          {name: '组件封装', router: 'packag'},
           {name: '敬请等待'},
           {name: '敬请等待'},
           {name: '敬请等待'}

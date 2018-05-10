@@ -11,7 +11,9 @@ import config from './config/index'
 import particles from 'particles.js'
 //公共模块
 import common from './common/index'
+import Vuex from 'vuex'
 
+Vue.use(Vuex)
 Vue.use(particles)
 Vue.use(ElementUI)
 
