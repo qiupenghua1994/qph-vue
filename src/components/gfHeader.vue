@@ -20,6 +20,7 @@
         isNavBarShrink:false,
         isSmallScreen: false,
         menus: [
+          {name: '首页', router: '/'},
           {name: '特效页面',router:'specialEffects'},
           // {name: '组件封装', router: 'packag'},
           {name: '我的简历', router: 'resume'},
