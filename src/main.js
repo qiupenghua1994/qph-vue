@@ -5,12 +5,14 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+
 //配置文件
-import config from './config/index'
+import '@/config/index'
+//公共模块
+import '@/common/index'
 //粒子特效
 import particles from 'particles.js'
-//公共模块
-import common from './common/index'
+
 import Vuex from 'vuex'
 
 Vue.use(Vuex)

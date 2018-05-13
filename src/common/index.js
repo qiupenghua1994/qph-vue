@@ -1,2 +1,3 @@
 //公共模块
-import vueResource from './vueResource.js'
+import './js/vueResource.js'
+import './css/index.css'

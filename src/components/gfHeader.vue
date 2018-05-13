@@ -21,8 +21,8 @@
         isSmallScreen: false,
         menus: [
           {name: '特效页面',router:'specialEffects'},
-          {name: '组件封装', router: 'packag'},
-          {name: '敬请等待'},
+          // {name: '组件封装', router: 'packag'},
+          {name: '我的简历', router: 'resume'},
           {name: '敬请等待'},
           {name: '敬请等待'}
         ]
@@ -53,6 +53,7 @@
     background-color: transparent;
     position: fixed;
     width: 100%;
+    z-index: 1024;
     transition: padding 0.3s,background-color 0.3s;
   }
   #navbar.shrink{

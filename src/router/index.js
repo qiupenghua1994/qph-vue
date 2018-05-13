@@ -8,7 +8,7 @@ import pageB from '@/components/pageB'
 import specialEffects from '@/page/specialEffects'
 import packagIndex from '@/page/packag/index'
 import elementIndex from '@/page/packag/element/index'
-
+import resume from '@/page/resume/index'
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +39,11 @@ export default new Router({
           component:pageB
         }
       ]
+    },
+    {
+      path: '/resume',
+      name: 'resume',
+      component: resume
     },
     {
       path: '/page',
