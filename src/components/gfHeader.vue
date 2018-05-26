@@ -72,7 +72,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
   * {
     -webkit-transition: all 0.5s;
@@ -90,17 +90,16 @@
     width: 100%;
     z-index: 1024;
     transition: padding 0.3s, background-color 0.3s;
+    &.shrink {
+      padding: 8px 16px;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+    &.active {
+      padding-bottom: 300px;
+      overflow: hidden;
+    }
   }
 
-  #navbar.shrink {
-    padding: 8px 16px;
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-
-  #navbar.active {
-    padding-bottom: 300px;
-    overflow: hidden;
-  }
 
   .header {
     width: 100%;
@@ -126,32 +125,30 @@
   .header-menu {
     float: right;
     display: inline-block;
-  }
+    &.active {
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      text-align: center;
+      .header-menu-item {
+        display: block;
+        opacity: 1;
+      }
+    }
 
-  .header-menu.active {
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    text-align: center;
   }
-
-  .header-menu.active .header-menu-item {
-    display: block;
-    opacity: 1;
-  }
-
   .header-menu-item {
     font-size: 16px;
     line-height: 40px;
     padding: 8px;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.5);
+    &:hover {
+      color: rgba(255, 255, 255, 0.75);
+    }
   }
 
-  .header-menu-item:hover {
-    color: rgba(255, 255, 255, 0.75);
-  }
 
   @media all and (max-width: 600px) {
     .header-menu-item {
