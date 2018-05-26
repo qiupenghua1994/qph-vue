@@ -9,6 +9,7 @@ import specialEffects from '@/page/specialEffects'
 import packagIndex from '@/page/packag/index'
 import elementIndex from '@/page/packag/element/index'
 import resume from '@/page/resume/index'
+import webChat from '@/page/webchat/webChat'
 Vue.use(Router)
 
 export default new Router({
@@ -24,7 +25,11 @@ export default new Router({
       name: 'specialEffects',
       component: specialEffects,
     },
-
+    {
+      path: '/webChat',
+      name: 'webChat',
+      component: webChat,
+    },
     {
       path: '/packag',
       name: 'packag',
