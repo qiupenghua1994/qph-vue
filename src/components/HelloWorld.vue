@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="bigPic"></div>
+    <div class="bigPic">
+      <img class="big-bg-img" src="../assets/tangwei.jpeg"/>
+      <img class="sm-bg-img" src="../assets/tangwei2.jpg"/>
+    </div>
   </div>
 </template>
 
@@ -75,8 +78,27 @@
   .bigPic{
     width: 100%;
     height: 1000px;
-    background-image: url("../assets/tangwei.jpeg");
+    /*background-image: url("../assets/tangwei.jpeg");*/
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .big-bg-img,
+  .sm-bg-img {
+    display: none;
+    width: 100%;
+  }
+
+  @media all and (max-width: 600px) {
+    .sm-bg-img {
+      display: initial;
+    }
+  }
+
+  @media all and (min-width: 600px) {
+    .big-bg-img {
+      display: initial;
+    }
+  }
+
 </style>

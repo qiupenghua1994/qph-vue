@@ -3,8 +3,11 @@
     <div class="header">
       <a class="header_logo"><img src="../assets/logo_header.svg"></a>
       <button class="header_btn" v-show="isSmallScreen">打开目录</button>
-      <div class="header_menu">
-        <a class="header_menu_item" v-for="menu in menus" @click="changeRouter(menu)">{{menu.name}}</a>
+      <div class="header-menu">
+        <a class="header-menu-item" v-for="menu in menus" @click="changeRouter(menu)">{{menu.name}}</a>
+        <a class="header-menu-shrink">
+          <button>test</button>
+        </a>
       </div>
     </div>
   </nav>
@@ -49,8 +52,13 @@
 
 <style scoped>
 
+  * {
+    trastion: all 1s;
+  }
+
   #navbar{
     padding: 27px 16px;
+    box-sizing: border-box;
     background-color: transparent;
     position: fixed;
     width: 100%;
@@ -77,18 +85,35 @@
   .header_btn{
 
   }
-  .header_menu{
+
+  .header-menu-shrink {
+    display: none;
+  }
+
+  .header-menu {
     float: right;
     display: inline-block;
   }
-  .header_menu_item{
+
+  .header-menu-item {
     font-size: 16px;
     line-height: 40px;
     padding: 8px;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.5);
   }
-  .header_menu_item:hover{
+
+  .header-menu-item:hover {
     color: rgba(255, 255, 255, 0.75);
+  }
+
+  @media all and (max-width: 600px) {
+    .header-menu-item {
+      display: none;
+    }
+
+    .header-menu-shrink {
+      display: block;
+    }
   }
 </style>
