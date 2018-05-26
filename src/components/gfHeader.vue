@@ -40,23 +40,20 @@
       openMenu() {
         this.isOpenMenu = !this.isOpenMenu;
         this.isNavBarShrink = this.isOpenMenu;
-        this.isOpenMenu || fireEvent('scroll');
-
-        var clickListen = (e) => {
-          var c = e.target.classList[0];
-          if (c && c.indexOf('header') >= 0) {
-
-          } else {
-            this.isOpenMenu = false;
-          }
-        };
         if (this.isOpenMenu) {
-          window.addEventListener('click', clickListen);
+          window.addEventListener('click', this.clickListen);
         } else {
-          window.removeEventListener('click', clickListen);
+          fireEvent('scroll');
+          window.removeEventListener('click', this.clickListen);
         }
-
       },
+      clickListen(e) {
+        var c = e.target.classList[0];
+        if (c && c.indexOf('header') >= 0) {
+        } else {
+          this.openMenu();
+        }
+      }
 
     },
     mounted: function () {
