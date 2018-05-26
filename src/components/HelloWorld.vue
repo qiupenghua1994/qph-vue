@@ -55,7 +55,6 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   h1, h2 {
     font-weight: normal;
@@ -78,7 +77,6 @@
   .bigPic{
     width: 100%;
     height: 1000px;
-    /*background-image: url("../assets/tangwei.jpeg");*/
     background-repeat: no-repeat;
     background-size: cover;
   }

@@ -6,7 +6,7 @@
       <div class="header-menu">
         <a class="header-menu-item" v-for="menu in menus" @click="changeRouter(menu)">{{menu.name}}</a>
         <a class="header-menu-shrink">
-          <button>test</button>
+          <i class="fa fa-list fa-2x"></i>
         </a>
       </div>
     </div>
@@ -73,6 +73,7 @@
     width: 100%;
     max-width: 1140px;
     margin: 0 auto;
+    line-height: 44px;
   }
   .header_logo{
     display: inline-block;
