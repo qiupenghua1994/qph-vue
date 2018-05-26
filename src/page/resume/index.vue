@@ -15,6 +15,7 @@
 <style scoped>
   .content-bg {
     background-color: #C4C8CD;
+    overflow: auto;
   }
 
   .word-box {
