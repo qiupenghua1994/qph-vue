@@ -8,7 +8,7 @@
               <img src="@/assets/weChat/touxiang.jpg">
             </div>
             <div class="user-name">
-              <span>天高任鸟飞sdsdffdfdfdfd</span>
+              <span>天高任鸟飞</span>
             </div>
             <div class="user-setting">
               <a class="glyphicon glyphicon-align-left"> </a>
@@ -19,6 +19,15 @@
             <input placeholder="搜索" v-model="searchData"/>
           </div>
           <div class="panel-tab">
+            <div class="panel-menu">
+              <span @click="changeMenu('smile')"><i class="fa fa-2x fa-smile-o"
+                                                    :class="{'active':menuCheck==='smile'}"></i></span>
+              <span>|</span>
+              <span @click="changeMenu('text')"><i class="fa fa-2x fa-file-text-o"
+                                                   :class="{'active':menuCheck==='text'}"></i></span>
+              <span>|</span>
+              <span @click="changeMenu('chat')"><i class="fa fa-2x fa-user" :class="{'active':menuCheck==='chat'}"></i></span>
+            </div>
             <router-view></router-view>
           </div>
         </div>
@@ -36,13 +45,49 @@
     name: 'webChat',
     data() {
       return {
-        searchData: ''
+        searchData: '',
+        menuCheck: 'smile',
+      }
+    },
+    methods: {
+      changeMenu(val) {
+        this.menuCheck = val;
       }
     }
   }
 </script>
 
 <style scoped lang="less">
+
+  .panel-tab {
+    padding-bottom: 4px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      border-bottom: 1px solid #24272c;
+      height: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .panel-menu {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 18px;
+      .active {
+        color: green;
+      }
+      span:nth-child(odd) {
+        width: 30%;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+  }
+
+
   .index-box {
     height: 100%;
   }
@@ -72,6 +117,7 @@
 
   .panel-box {
     width: 280px;
+    border-radius: 5px 0 0 5px;
     flex-shrink: 0;
     height: 100%;
     background-color: #2e3238;
@@ -155,4 +201,5 @@
     }
 
   }
+
 </style>
