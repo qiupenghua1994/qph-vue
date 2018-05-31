@@ -24,9 +24,9 @@
         isSmallScreen: false,
         menus: [
           {name: '首页', router: '/'},
-          {name: '特效页面', router: 'specialEffects'},
-          {name: '网页聊天', router: 'webChat'},
-          {name: '我的简历', router: 'resume'},
+          {name: '特效页面', router: '/specialEffects'},
+          {name: '网页聊天', router: '/webChat'},
+          {name: '我的简历', router: '/resume'},
           {name: '敬请等待'},
           {name: '敬请等待'}
         ]

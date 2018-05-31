@@ -10,6 +10,13 @@ import packagIndex from '@/page/packag/index'
 import elementIndex from '@/page/packag/element/index'
 import resume from '@/page/resume/index'
 import webChat from '@/page/webchat/webChat'
+import contentArticle from '@/page/webchat/contentArticle'
+import contentChat from '@/page/webchat/contentChat'
+import contentLinkman from '@/page/webchat/contentLinkman'
+import panelArticle from '@/page/webchat/panelArticle'
+import panelChat from '@/page/webchat/panelChat'
+import panelLinkman from '@/page/webchat/panelLinkman'
+
 Vue.use(Router)
 
 export default new Router({
@@ -29,19 +36,42 @@ export default new Router({
       path: '/webChat',
       name: 'webChat',
       component: webChat,
+      children: [
+        {
+          path: 'chat',
+          components: {
+            panel: panelChat,
+            content: contentChat
+          }
+        },
+        {
+          path: 'article',
+          components: {
+            panel: panelArticle,
+            content: contentArticle
+          }
+        },
+        {
+          path: 'linkman',
+          components: {
+            panel: panelLinkman,
+            content: contentLinkman
+          }
+        }
+      ]
     },
     {
       path: '/packag',
       name: 'packag',
       component: packagIndex,
-      children:[
+      children: [
         {
-          path:'',
+          path: '',
           component: elementIndex
         },
         {
-          path:'pageB',
-          component:pageB
+          path: 'pageB',
+          component: pageB
         }
       ]
     },

@@ -19,25 +19,25 @@
             <input placeholder="搜索" v-model="searchData"/>
           </div>
           <div class="panel-tab">
-            <div class="panel-menu">
-              <span @click="changeMenu('smile')"><i class="fa fa-2x fa-smile-o"
-                                                    :class="{'active':menuCheck==='smile'}"></i></span>
-              <span>|</span>
-              <span @click="changeMenu('text')"><i class="fa fa-2x fa-file-text-o"
-                                                   :class="{'active':menuCheck==='text'}"></i></span>
-              <span>|</span>
-              <span @click="changeMenu('chat')"><i class="fa fa-2x fa-user" :class="{'active':menuCheck==='chat'}"></i></span>
-            </div>
-            <router-view></router-view>
+            <span @click="changeMenu('chat')"><i class="fa fa-2x fa-smile-o"
+                                                 :class="{'active':menuCheck==='chat'}"></i></span>
+            <span>|</span>
+            <span @click="changeMenu('article')"><i class="fa fa-2x fa-file-text-o"
+                                                    :class="{'active':menuCheck==='article'}"></i></span>
+            <span>|</span>
+            <span @click="changeMenu('linkman')"><i class="fa fa-2x fa-user"
+                                                    :class="{'active':menuCheck==='linkman'}"></i></span>
+          </div>
+          <div class="panel-content">
+            <router-view name="panel"></router-view>
           </div>
         </div>
         <div class="edit-box">
-          <router-view name="test2"></router-view>
+          <router-view name="content"></router-view>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -46,22 +46,42 @@
     data() {
       return {
         searchData: '',
-        menuCheck: 'smile',
+        menuCheck: 'linkman',
       }
+    },
+    mounted() {
+      this.changeMenu(this.menuCheck);
     },
     methods: {
       changeMenu(val) {
         this.menuCheck = val;
+        this.$router.push({path: '/webChat/' + val})
       }
-    }
+    },
   }
 </script>
 
 <style scoped lang="less">
 
+  .content-first {
+    background: url("../../assets/weChat/bg.jpg") no-repeat;
+    background-size: cover;
+  }
+
   .panel-tab {
-    padding-bottom: 4px;
+    padding: 0 10px 8px;
     position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .active {
+      color: green;
+    }
+    span:nth-child(odd) {
+      width: 30%;
+      cursor: pointer;
+      text-align: center;
+    }
     &::after {
       content: '';
       position: absolute;
@@ -71,25 +91,11 @@
       right: 0;
       bottom: 0;
     }
-    .panel-menu {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 0 18px;
-      .active {
-        color: green;
-      }
-      span:nth-child(odd) {
-        width: 30%;
-        cursor: pointer;
-        text-align: center;
-      }
-    }
   }
-
 
   .index-box {
     height: 100%;
+
   }
 
   .chat-box {
