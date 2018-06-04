@@ -14,6 +14,20 @@
       return {
         linkList: [
           {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
+          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
           {name: '姐姐'},
           {name: '妹妹'},
           {name: '弟弟'},
@@ -33,6 +47,7 @@
       align-items: center;
       background-color: #2e3238;
       border-bottom: 1px solid #26292e;
+      padding: 0px 8px;
       img {
         width: 35px;
         height: 35px;

@@ -15,17 +15,16 @@
             </div>
           </div>
           <div class="panel-search">
-            <i class="fa fa-search fa-lg"></i>
+            <i class="panel-search-icon"></i>
             <input placeholder="搜索" v-model="searchData"/>
           </div>
           <div class="panel-tab">
-            <span @click="changeMenu('chat')"><i class="fa fa-2x fa-smile-o"
-                                                 :class="{'active':menuCheck==='chat'}"></i></span>
+            <span @click="changeMenu('chat')"><i class="chat-icon" :class="{'active':menuCheck==='chat'}"></i></span>
             <span>|</span>
-            <span @click="changeMenu('article')"><i class="fa fa-2x fa-file-text-o"
+            <span @click="changeMenu('article')"><i class="article-icon"
                                                     :class="{'active':menuCheck==='article'}"></i></span>
             <span>|</span>
-            <span @click="changeMenu('linkman')"><i class="fa fa-2x fa-user"
+            <span @click="changeMenu('linkman')"><i class="linkman-icon"
                                                     :class="{'active':menuCheck==='linkman'}"></i></span>
           </div>
           <div class="panel-content">
@@ -68,6 +67,16 @@
     background-size: cover;
   }
 
+  .panel-content {
+    position: absolute;
+    bottom: 0;
+    top: 160px;
+    right: 0;
+    left: 0;
+    overflow: auto;
+  }
+
+
   .panel-tab {
     padding: 0 10px 8px;
     position: relative;
@@ -81,6 +90,45 @@
       width: 30%;
       cursor: pointer;
       text-align: center;
+    }
+    .chat-icon {
+      background: url("../../assets/weChat/weicon.png") no-repeat;
+      background-position: -150px -96px;
+      -webkit-background-size: 487px 462px;
+      background-size: 487px 462px;
+      display: inline-block;
+      vertical-align: middle;
+      width: 35px;
+      height: 35px;
+      &.active {
+        background-position: -185px -96px;
+      }
+    }
+    .article-icon {
+      background: url("../../assets/weChat/weicon.png") no-repeat;
+      background-position: -376px -322px;
+      -webkit-background-size: 487px 462px;
+      background-size: 487px 462px;
+      display: inline-block;
+      vertical-align: middle;
+      width: 35px;
+      height: 35px;
+      &.active {
+        background-position: -304px -281px;
+      }
+    }
+    .linkman-icon {
+      background: url("../../assets/weChat/weicon.png") no-repeat;
+      background-position: -220px -96px;
+      -webkit-background-size: 487px 462px;
+      background-size: 487px 462px;
+      display: inline-block;
+      vertical-align: middle;
+      width: 35px;
+      height: 35px;
+      &.active {
+        background-position: -304px -246px;
+      }
     }
     &::after {
       content: '';
@@ -122,6 +170,7 @@
   }
 
   .panel-box {
+    position: relative;
     width: 280px;
     border-radius: 5px 0 0 5px;
     flex-shrink: 0;
@@ -189,6 +238,16 @@
     display: flex;
     align-items: center;
     border-radius: 2px;
+    .panel-search-icon {
+      background: url("../../assets/weChat/weicon.png") no-repeat;
+      background-position: -60px -432px;
+      -webkit-background-size: 487px 462px;
+      background-size: 487px 462px;
+      display: inline-block;
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
+    }
     i {
       width: 30px;
       color: white;
