@@ -31,5 +31,3 @@ npm test
 安装的插件
 cnpm install particles.js -s
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
