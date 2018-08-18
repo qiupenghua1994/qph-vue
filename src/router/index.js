@@ -17,6 +17,7 @@ import panelArticle from '@/page/webchat/panelArticle'
 import panelChat from '@/page/webchat/panelChat'
 import panelLinkman from '@/page/webchat/panelLinkman'
 import worklog from '@/page/worklog/index'
+import manage from '@/page/manage/index'
 
 Vue.use(Router)
 
@@ -100,6 +101,11 @@ export default new Router({
       path: '/workLog',
       name: 'workLog',
       component: worklog
+    },
+    {
+      path: '/manage',
+      name: 'manage',
+      component: manage
     }
   ]
 })

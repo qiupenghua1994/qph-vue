@@ -28,7 +28,7 @@
           {name: '网页聊天', router: '/webChat'},
           {name: '我的简历', router: '/resume'},
           {name: '工作日志', router: '/workLog'},
-          {name: '敬请等待'}
+          {name: '系统管理', router: '/manage'}
         ]
       }
     },
@@ -145,7 +145,7 @@
     cursor: pointer;
     color: rgba(255, 255, 255, 0.5);
     &:hover {
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.75) !important;
     }
   }
 
