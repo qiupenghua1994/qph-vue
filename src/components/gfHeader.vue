@@ -26,7 +26,7 @@
           {name: '首页', router: '/'},
           {name: '特效页面', router: '/specialEffects'},
           {name: '网页聊天', router: '/webChat'},
-          {name: '我的简历', router: '/resume'},
+          // {name: '我的简历', router: '/resume'},
           {name: '工作日志', router: '/workLog'},
           {name: '系统管理', router: '/manage'}
         ]
