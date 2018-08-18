@@ -5,7 +5,6 @@ Vue.use(VueResource);
 
 var resource = Vue.resource;
 Vue.http.options.root = window.App.setting.httpRoot;
-// Vue.http.options.emulateJSON   = true;
 
 var get = Vue.http.get;
 var post = Vue.http.post;
@@ -26,8 +25,9 @@ Vue.http.get = function (url, option,) {
  * @param config 配置参数 参考https://github.com/pagekit/vue-resource/blob/develop/docs/http.md
  * @returns {*|void}
  */
-Vue.http.post = function (url, body, option,) {
+Vue.http.post = function (url, body, option) {
   //TODO do something i want
+  arguments[0] = '/nodeOne/' + arguments[0];
   return post.apply(this, arguments);
 };
 
