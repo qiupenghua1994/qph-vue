@@ -2,8 +2,8 @@
   <div>
     <div>联系人主体</div>
     <input v-model="content"></input>
-    <button @click="send">发送</button>
-    <button @click="sendSocket">web-socket发送</button>
+    <button @click="send">发送post</button>
+    <button class="btn" @click="sendSocket">web-socket发送</button>
     <div>
       <div v-for="item in chatList">
         {{item.data}}
