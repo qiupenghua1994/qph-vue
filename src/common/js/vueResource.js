@@ -16,7 +16,11 @@ var post = Vue.http.post;
  */
 Vue.http.get = function (url, option,) {
   //TODO do something i want
-  return get.apply(this, arguments);
+  if (url.substr(0, 1) == '/') {
+    url = url.substr(1);
+  }
+  url = '/nodeOne/' + url;
+  return post.call(this, url, option);
 };
 /**
  * 重写post请求
@@ -27,8 +31,11 @@ Vue.http.get = function (url, option,) {
  */
 Vue.http.post = function (url, body, option) {
   //TODO do something i want
-  arguments[0] = '/nodeOne/' + arguments[0];
-  return post.apply(this, arguments);
+  if (url.substr(0, 1) == '/') {
+    url = url.substr(1);
+  }
+  url = '/nodeOne/' + url;
+  return post.call(this, url, body, option);
 };
 
 //test
