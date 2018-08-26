@@ -38,7 +38,7 @@
     methods: {
       init() {
         var _this = this;
-        this.socket = io('http://localhost:8080');
+        this.socket = io(location.hostname + ':8080');
         this.socket.on('connection', function (sk) {
 
         });
