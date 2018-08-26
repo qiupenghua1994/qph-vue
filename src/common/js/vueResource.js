@@ -40,21 +40,21 @@ Vue.http.post = function (url, body, option) {
 
 //test
 // Vue页面中 this.$http.get('test',{},{a:1});
-var p1 = Vue.http.get('getTest');
-p1.then(function (resp) {
-  console.log(resp);
-}).catch(function (resp) {
-  console.log(resp);
-}).finally(function (resp) {
-  console.log(resp);
-});
-
-var p2 = Vue.http.post('postTest', {data: 'testData'});
-
-p2.then(function (resp) {
-  console.log(resp);
-}).catch(function (resp) {
-  console.log(resp);
-}).finally(function (resp) {
-  console.log(resp);
-});
+// var p1 = Vue.http.get('getTest');
+// p1.then(function (resp) {
+//   console.log(resp);
+// }).catch(function (resp) {
+//   console.log(resp);
+// }).finally(function (resp) {
+//   console.log(resp);
+// });
+//
+// var p2 = Vue.http.post('postTest', {data: 'testData'});
+//
+// p2.then(function (resp) {
+//   console.log(resp);
+// }).catch(function (resp) {
+//   console.log(resp);
+// }).finally(function (resp) {
+//   console.log(resp);
+// });

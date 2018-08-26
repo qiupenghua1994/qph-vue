@@ -13,6 +13,10 @@ import '@/common/index'
 //粒子特效
 import particles from 'particles.js'
 
+import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery'
+
 import Vuex from 'vuex'
 
 Vue.use(Vuex)

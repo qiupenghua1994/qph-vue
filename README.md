@@ -29,5 +29,6 @@ npm test
 
 ```
 安装的插件
-cnpm install particles.js -s
+ cnpm install particles.js -s
+ cnpm install --save socket.io
 ```
