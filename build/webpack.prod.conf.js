@@ -85,14 +85,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks (module) {
-        // any required modules inside node_modules are extracted to vendor
+      filename: 'plugin/vendor.js',
+      minChunks: function (module, count) {
+        console.log(module.resource, `引用次数${count}`);
+        //"有正在处理文件" + "这个文件是 .js 后缀" + "这个文件是在 node_modules 中"
         return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
+          module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, './../node_modules')) === 0
         )
       }
     }),
@@ -102,6 +100,20 @@ const webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       minChunks: Infinity
     }),
+
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'common',
+    //   chunks: ['app'],
+    //   filename: 'common.bundle.js',
+    //   minChunks: 2,
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   chunks: ['common'],
+    //   filename: 'vendor.bundle.js',
+    //   minChunks: Infinity,
+    // }),
+
     // This instance extracts shared chunks from code splitted chunks and bundles them
     // in a separate chunk, similar to the vendor chunk
     // see: https://webpack.js.org/plugins/commons-chunk-plugin/#extra-async-commons-chunk
