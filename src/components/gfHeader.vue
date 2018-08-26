@@ -35,7 +35,8 @@
     methods: {
       changeRouter(menu) {
         this.$router.push(menu.router);
-        this.isNavBarShrink && this.openMenu();
+        //当菜单下拉状态并且
+        this.isOpenMenu && this.isNavBarShrink && this.openMenu();
       },
       openMenu() {
         this.isOpenMenu = !this.isOpenMenu;
