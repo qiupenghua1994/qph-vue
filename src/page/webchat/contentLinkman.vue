@@ -48,8 +48,8 @@
       },
       sendSocket() {
         this.chatList.push({data: this.content});
+        this.socket.emit('chat', {content: this.content});
         this.content = '';
-        this.socket.emit('chat', {content: this.content})
       }
     }
   }
