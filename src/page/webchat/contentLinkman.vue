@@ -1,14 +1,17 @@
 <template>
-  <div>
-    <div>联系人主体</div>
-    <input v-model="content"></input>
-    <button @click="send">发送post</button>
-    <button class="btn" @click="sendSocket">web-socket发送</button>
-    <div>{{a}}</div>
-    <div>
+  <div style="height: 100%">
+    <div style="height: 50px">联系人主体</div>
+
+
+    <div style="height: calc(100% - 150px - 50px)">
       <div v-for="item in chatList">
         {{item.data}}
       </div>
+    </div>
+    <div class="content-box" style="height: 148px;position: relative;">
+      <textarea rows="5" style="width: 100%;height: 155px;border-left: none;border-right: none;margin: -5px 0"
+                v-model="content"></textarea>
+      <button style="position: absolute;right: 10px;bottom: 10px" class="btn" @click="sendSocket">发送(S)</button>
     </div>
   </div>
 
@@ -16,10 +19,8 @@
 
 <script>
 
-  import socket from 'socket.io-client'
+  import io from 'socket.io-client'
   import $ from 'jquery'
-
-  const home = r => require.ensure([], () => r(require('./test')));
 
   export default {
     name: 'contentLinkman',
@@ -28,28 +29,32 @@
         content: '',
         chatList: [],
         ws: null,
-        a: home
+        socket: ''
       }
     },
     mounted() {
       this.init();
     },
     methods: {
-      send() {
-        this.$http.post('upgrade', {content: this.content});
-      },
       init() {
+        var _this = this;
+        this.socket = io('http://localhost:8080');
+        this.socket.on('connection', function (sk) {
 
+        });
+        this.socket.on('chatCB', function (data) {
+          _this.chatList.push(data);
+        })
       },
       sendSocket() {
-        debugger
-        console.log(socket);
-        console.log($);
+        this.chatList.push({data: this.content});
+        this.content = '';
+        this.socket.emit('chat', {content: this.content})
       }
     }
   }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
 </style>
