@@ -14,25 +14,17 @@
       return {
         linkList: [
           {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '哥哥', url: '../../assets/weChat/touxiang01.jpg'},
-          {name: '姐姐'},
-          {name: '妹妹'},
-          {name: '弟弟'},
         ]
       }
+    },
+    mounted() {
+      var socket = this.$store.state.conn.socket;
+      var _this = this;
+      socket.on('updateLinkMan', function (data) {
+        _this.linkList = data.data.map(function (item) {
+          return {name: item, url: '../../assets/weChat/touxiang01.jpg'}
+        })
+      })
     }
   }
 </script>

@@ -18,6 +18,7 @@ import panelChat from '@/page/webchat/panelChat'
 import panelLinkman from '@/page/webchat/panelLinkman'
 import worklog from '@/page/worklog/index'
 import manage from '@/page/manage/index'
+import login from '@/page/login'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login,
     },
     {
       path: '/index',

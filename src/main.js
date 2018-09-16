@@ -17,9 +17,8 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery'
 
-import Vuex from 'vuex'
+import store from '@/store/index'
 
-Vue.use(Vuex)
 Vue.use(particles)
 Vue.use(ElementUI)
 
@@ -29,6 +28,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

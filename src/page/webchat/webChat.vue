@@ -8,7 +8,7 @@
               <img src="@/assets/weChat/touxiang.jpg">
             </div>
             <div class="user-name">
-              <span>天高任鸟飞</span>
+              <span>{{userName}}</span>
             </div>
             <div class="user-setting">
               <a class="glyphicon glyphicon-align-left"> </a>
@@ -40,16 +40,21 @@
 </template>
 
 <script>
+  import {needLogin} from '@/common/js/mixins'
+
   export default {
     name: 'webChat',
+    mixins: [needLogin],
     data() {
       return {
         searchData: '',
         menuCheck: 'linkman',
+        userName: ''
       }
     },
     mounted() {
-      this.changeMenu(this.menuCheck);
+      this.userName = this.$store.state.conn.user.name;
+
     },
     methods: {
       changeMenu(val) {
@@ -75,7 +80,6 @@
     left: 0;
     overflow: auto;
   }
-
 
   .panel-tab {
     padding: 0 10px 8px;
@@ -152,7 +156,7 @@
     max-width: 1000px;
     min-width: 800px;
     padding-top: 100px;
-    height: 80%;
+    height: 90%;
     transition: 0.3s;
   }
 
