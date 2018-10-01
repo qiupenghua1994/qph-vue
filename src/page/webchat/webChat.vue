@@ -40,11 +40,9 @@
 </template>
 
 <script>
-  import {needLogin} from '@/common/js/mixins'
 
   export default {
     name: 'webChat',
-    mixins: [needLogin],
     data() {
       return {
         searchData: '',
@@ -52,9 +50,16 @@
         userName: ''
       }
     },
+    created: function () {
+
+      if (this.$store.state.conn.user == null) {
+        this.$router.push({name: 'login'})
+      } else {
+        this.changeMenu(this.menuCheck);
+      }
+    },
     mounted() {
       this.userName = this.$store.state.conn.user.name;
-
     },
     methods: {
       changeMenu(val) {

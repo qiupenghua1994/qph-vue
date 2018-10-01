@@ -26,7 +26,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
+      name: 'index',
       component: HelloWorld,
     },
     {
@@ -48,27 +48,39 @@ export default new Router({
       path: '/webChat',
       name: 'webChat',
       component: webChat,
+      meta: {
+        requireAuth: true
+      },
       children: [
         {
           path: 'chat',
           components: {
             panel: panelChat,
             content: contentChat
-          }
+          },
+          meta: {
+            requireAuth: true
+          },
         },
         {
           path: 'article',
           components: {
             panel: panelArticle,
             content: contentArticle
-          }
+          },
+          meta: {
+            requireAuth: true
+          },
         },
         {
           path: 'linkman',
           components: {
             panel: panelLinkman,
             content: contentLinkman
-          }
+          },
+          meta: {
+            requireAuth: true
+          },
         }
       ]
     },

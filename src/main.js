@@ -22,7 +22,21 @@ import store from '@/store/index'
 Vue.use(particles)
 Vue.use(ElementUI)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    if (store.state.conn.user == null) {
+      next({name: 'login', params: to})
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+
+})
 
 /* eslint-disable no-new */
 new Vue({

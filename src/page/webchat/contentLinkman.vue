@@ -20,9 +20,7 @@
       </div>
     </div>
     <div class="content-box" style="height: 148px;position: relative;">
-      <textarea rows="5" ref="textarea"
-                style="width: 100%;height: 155px;border-left: none;border-right: none;margin: -5px 0"
-                v-model="content" @keyup.enter="sendSocket"></textarea>
+      <div id="wangEdit" ref="wangEdit" style="width: 100%;height: 150px;" @keyup.enter="sendSocket"></div>
       <button style="position: absolute;right: 10px;bottom: 10px" class="btn" @click="sendSocket">发送(S)</button>
     </div>
   </div>
@@ -30,13 +28,13 @@
 </template>
 
 <script>
-
-  import {needLogin} from '@/common/js/mixins'
+  var wangEditer = require('wangeditor');
 
   export default {
     name: 'contentLinkman',
     data() {
       return {
+        wang: '',
         content: '',
         chatList: [],
         ws: null,
@@ -46,6 +44,14 @@
     },
     mounted() {
       this.init();
+      this.wang = new wangEditer('#wangEdit');
+      this.wang.customConfig.menus = [
+        'emoticon',  // 表情
+      ];
+      this.wang.create();
+
+      $('.w-e-text-container').outerHeight($('#wangEdit').outerHeight() - $('.w-e-toolbar').outerHeight());
+
     },
     methods: {
       init() {
@@ -83,7 +89,14 @@
         if (e.ctrlKey) {
           this.$refs.textarea.value += '\n';
         } else {
-          this.content = this.content.replace(/\n$/, '');
+          this.content = this.wang.txt.html();
+          this.content = this.content.replace(/(\<p\>\<br\>\<\/p\>)/g, '\<br\>');
+          this.content = this.content.replace(/(\<br\>)$/g, '');
+          this.content = this.content.replace(/(\<\/p\>\<p\>)/g, '\<br\>');
+          this.content = this.content.replace(/(^\<p\>|\<\/p\>$)/g, '');
+          if (!this.content) {
+            return
+          }
           this.socket.emit('chat', {content: this.content});
           this.content = '';
         }
@@ -93,7 +106,7 @@
   }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
   .title {
     height: 50px;
     position: relative;
@@ -165,5 +178,15 @@
 
   .chatContentList .active .item-name {
     padding: 9px 13px 9px 0;
+  }
+
+  .w-e-text-container .w-e-panel-container {
+    left: 160px;
+    top: auto;
+    bottom: calc(100% + 32px);
+  }
+
+  .w-e-text p, .w-e-text h1, .w-e-text h2, .w-e-text h3, .w-e-text h4, .w-e-text h5, .w-e-text table, .w-e-text pre {
+    margin: 0;
   }
 </style>
