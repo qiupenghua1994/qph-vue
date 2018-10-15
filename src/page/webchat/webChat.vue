@@ -43,11 +43,18 @@
 
   export default {
     name: 'webChat',
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+        // 通过 `vm` 访问组件实例
+        vm.login();
+      })
+    },
     data() {
       return {
         searchData: '',
         menuCheck: 'linkman',
-        userName: ''
+        userName: '',
+        socket: '',
       }
     },
     created: function () {
@@ -62,6 +69,12 @@
       this.userName = this.$store.state.conn.user.name;
     },
     methods: {
+      login() {
+        console.log('login');
+        this.socket = this.$store.state.conn.socket;
+        var user = this.$store.state.conn.user;
+        this.socket.emit('login', {name: user.name});
+      },
       changeMenu(val) {
         this.menuCheck = val;
         this.$router.push({path: '/webChat/' + val})
