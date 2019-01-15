@@ -20,7 +20,12 @@
     mounted() {
       var socket = this.$store.state.conn.socket;
       var _this = this;
-      socket.on('updateLinkMan', function (data) {
+      socket.on('updateLinkManCB', function (data) {
+        _this.linkList = data.data.map(function (item) {
+          return {name: item, url: '../../assets/weChat/touxiang01.jpg'}
+        })
+      });
+      socket.emit('updateLinkMan', function (data) {
         _this.linkList = data.data.map(function (item) {
           return {name: item, url: '../../assets/weChat/touxiang01.jpg'}
         })

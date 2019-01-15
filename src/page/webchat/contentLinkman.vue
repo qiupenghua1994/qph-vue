@@ -20,80 +20,87 @@
       </div>
     </div>
     <div class="content-box" style="height: 148px;position: relative;">
-      <textarea rows="5" ref="textarea"
-                style="width: 100%;height: 155px;border-left: none;border-right: none;margin: -5px 0"
-                v-model="content" @keyup.enter="sendSocket"></textarea>
-      <button style="position: absolute;right: 10px;bottom: 10px" class="btn" @click="sendSocket">发送(S)</button>
+      <div id="wangEdit" ref="wangEdit" style="width: 100%;height: 150px;" @keyup.enter="sendCtrlAndEnter"></div>
+      <button style="position: absolute;right: 10px;bottom: 10px;z-index: 10001;" class="btn" @click="sendSocket">
+        发送(Ctrl+Enter)
+      </button>
     </div>
   </div>
 
 </template>
 
 <script>
-
-  import {needLogin} from '@/common/js/mixins'
+  var wangEditer = require('wangeditor');
+  import {getNewSocket} from "../../common/js/socketAPI";
 
   export default {
     name: 'contentLinkman',
+    beforeRouteLeave(to, from, next) {
+      //离开时 移除监听
+      this.socket.removeAllListeners('chatCB');
+      next();
+    },
     data() {
       return {
+        wang: '',
         content: '',
         chatList: [],
         ws: null,
         socket: '',
-        userName: this.$store.state.conn.user.name
+        userName: this.$store.state.conn.user.name,
+        canLose: false,
       }
     },
     mounted() {
       this.init();
+      this.wang = new wangEditer('#wangEdit');
+      this.wang.customConfig.menus = [
+        'emoticon',  // 表情
+      ];
+      this.wang.create();
+      $('.w-e-text-container').outerHeight($('#wangEdit').outerHeight() - $('.w-e-toolbar').outerHeight());
     },
     methods: {
       init() {
-        var _this = this;
         this.socket = this.$store.state.conn.socket;
-        this.socket.on('connection', function (data) {
-          console.log('connection', data.a);
-        });
-        var user = this.$store.state.conn.user;
-        this.socket.emit('login', {name: user.name});
-        this.socket.on('chatCB', function (data) {
-          if (data.userName == _this.userName) {
+        this.socket.on('chatCB', (data) => {
+          console.log('chatCB');
+          if (data.userName == this.userName) {
             data.flag = true;
           }
           data.data = data.data.replace(/\n/g, '</br>');
-          _this.chatList.push(data);
-          _this.$nextTick(function () {
-            if (_this.$refs.chatContentRef.scrollHeight) {
-              _this.$refs.chatContentRef.scrollTop = _this.$refs.chatContentRef.scrollHeight
-
-            }
-          })
-
+          this.chatList.push(data);
+          this.$nextTick(this.scrollToBottom)
         });
-
-        this.socket.on('disconnect', function () {
-          console.log('disconnect');
-        });
-        this.socket.on('user disconnected', function () {
-          console.log('user disconnected');
-        });
-
       },
-      sendSocket(e) {
-        if (e.ctrlKey) {
-          this.$refs.textarea.value += '\n';
-        } else {
-          this.content = this.content.replace(/\n$/, '');
-          this.socket.emit('chat', {content: this.content});
-          this.content = '';
+      scrollToBottom() {
+        if (this.$refs.chatContentRef.scrollHeight) {
+          this.$refs.chatContentRef.scrollTop = this.$refs.chatContentRef.scrollHeight
         }
-
+      },
+      sendCtrlAndEnter(e) {
+        if (!e.ctrlKey) {
+          return
+        }
+        this.sendSocket();
+      },
+      sendSocket() {
+        this.content = this.wang.txt.html();
+        this.content = this.content.replace(/(\<p\>\<br\>\<\/p\>)/g, '\<br\>');
+        this.content = this.content.replace(/(\<br\>)$/g, '');
+        this.content = this.content.replace(/(\<\/p\>\<p\>)/g, '\<br\>');
+        this.content = this.content.replace(/(^\<p\>|\<\/p\>$)/g, '');
+        if (!this.content) {
+          return
+        }
+        this.socket.emit('chat', {content: this.content});
+        this.wang.txt.clear()
       }
     }
   }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
   .title {
     height: 50px;
     position: relative;
@@ -165,5 +172,15 @@
 
   .chatContentList .active .item-name {
     padding: 9px 13px 9px 0;
+  }
+
+  .w-e-text-container .w-e-panel-container {
+    left: 160px;
+    top: auto;
+    bottom: calc(100% + 32px);
+  }
+
+  .w-e-text p, .w-e-text h1, .w-e-text h2, .w-e-text h3, .w-e-text h4, .w-e-text h5, .w-e-text table, .w-e-text pre {
+    margin: 0;
   }
 </style>

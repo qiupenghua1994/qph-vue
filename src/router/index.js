@@ -19,7 +19,6 @@ import panelLinkman from '@/page/webchat/panelLinkman'
 import worklog from '@/page/worklog/index'
 import manage from '@/page/manage/index'
 import login from '@/page/login'
-import maze from '@/page/game/maze'
 
 Vue.use(Router)
 
@@ -27,8 +26,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: maze,
+      name: 'index',
+      component: HelloWorld,
     },
     {
       path: '/login',
@@ -49,27 +48,39 @@ export default new Router({
       path: '/webChat',
       name: 'webChat',
       component: webChat,
+      meta: {
+        requireAuth: true
+      },
       children: [
         {
           path: 'chat',
           components: {
             panel: panelChat,
             content: contentChat
-          }
+          },
+          meta: {
+            requireAuth: true
+          },
         },
         {
           path: 'article',
           components: {
             panel: panelArticle,
             content: contentArticle
-          }
+          },
+          meta: {
+            requireAuth: true
+          },
         },
         {
           path: 'linkman',
           components: {
             panel: panelLinkman,
             content: contentLinkman
-          }
+          },
+          meta: {
+            requireAuth: true
+          },
         }
       ]
     },
@@ -117,11 +128,6 @@ export default new Router({
       path: '/manage',
       name: 'manage',
       component: manage
-    },
-    {
-      path:'/maze',
-      name:'maze',
-      component:maze
     }
   ]
 })

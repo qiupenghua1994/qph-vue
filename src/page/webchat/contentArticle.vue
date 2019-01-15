@@ -1,10 +1,14 @@
 <template>
-  <div>文章主体</div>
+  <div>
+    <gf-editor></gf-editor>
+  </div>
 </template>
 
 <script>
+  import GfEditor from "../../components/gfEditor";
   export default {
-    name: 'contentArticle'
+    name: 'contentArticle',
+    components: {GfEditor}
   }
 </script>
 

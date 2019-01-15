@@ -15,12 +15,17 @@
     data() {
       return {
         userName: '',
-        textArr: '少年哟，请随便输入一个账号哟！'
+        textArr: '少年哟，请随便输入一个账号哟！',
+        urlFrom: '',
       }
     },
     mounted() {
-      var a = this.$route.params;
-
+      this.urlFrom = this.$route.params;
+      if (!this.urlFrom || !this.urlFrom.name) {
+        this.urlFrom = {
+          name: 'index'
+        }
+      }
       this.initHack();
     },
     computed: {
@@ -41,7 +46,7 @@
           name: this.userName
         };
         this.$store.commit('setUser', user);
-        this.$router.go(-1);
+        this.$router.push({name: this.urlFrom.name, params: this.urlFrom.params})
       },
       initHack() {
         var _this = this;

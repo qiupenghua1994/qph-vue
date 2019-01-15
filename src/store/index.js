@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import socket from '@/common/js/socketAPI'
+import {socket} from '@/common/js/socketAPI'
 
 Vue.use(Vuex);
 
@@ -39,3 +39,4 @@ const store = new Vuex.Store({
 })
 
 export default store
+// this.$store.state.conn.socket;
