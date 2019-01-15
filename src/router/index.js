@@ -19,6 +19,7 @@ import panelLinkman from '@/page/webchat/panelLinkman'
 import worklog from '@/page/worklog/index'
 import manage from '@/page/manage/index'
 import login from '@/page/login'
+import maze from '@/page/game/maze'
 
 Vue.use(Router)
 
@@ -27,7 +28,7 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld,
+      component: maze,
     },
     {
       path: '/login',
@@ -116,6 +117,11 @@ export default new Router({
       path: '/manage',
       name: 'manage',
       component: manage
+    },
+    {
+      path:'/maze',
+      name:'maze',
+      component:maze
     }
   ]
 })
