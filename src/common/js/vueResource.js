@@ -14,7 +14,7 @@ var post = Vue.http.post;
  * @param url
  * @param option
  */
-Vue.http.get = function (url, option,) {
+Vue.http.get = function (url, option) {
   //TODO do something i want
   if (url.substr(0, 1) == '/') {
     url = url.substr(1);
